@@ -6,10 +6,10 @@ To get started with the project, follow these steps:
 
 1. Clone the Repository
 
-git clone [https://github.com/kolluvinay425/WetherViewer.git](https://github.com/kolluvinay425/WeatherApp.git)
+git clone https://github.com/kolluvinay425/WeatherApp.git
 cd WetherViewer
 
-git clone [https://github.com/kolluvinay425/WetherViewer.git](https://github.com/kolluvinay425/WeatherApp.git)
+git clone https://github.com/kolluvinay425/WeatherApp.git
 cd WetherViewer
 2. Install Packages
 Use npm to install the required dependencies:
