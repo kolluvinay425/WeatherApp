@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { getTemperatureIcon } from "../helpers";
-import { fetchHourlyWeatherData } from "../helpers/Api";
 
 // Styled components
 const FavoritesContainer = styled.div`

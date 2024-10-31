@@ -1,6 +1,5 @@
 // src/App.js
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import Search from "./components/Search";
 import WeatherDisplay from "./components/WeatherDisplay";
 import Favorites from "./components/Favorites";
