@@ -149,7 +149,8 @@ const Favorites = ({ favorites, removeFavorite, showWeather }) => {
                   />
                   <div style={{ display: "flex", flexDirection: "column" }}>
                     <span style={{ paddingBottom: "2px" }}>
-                      {weather.temperature} °C
+                      {weather.temperature}
+                      {weather.currentUnits.temperature_2m}
                     </span>
                     <span>{weather.weatherConditions}</span>
                   </div>
@@ -161,7 +162,9 @@ const Favorites = ({ favorites, removeFavorite, showWeather }) => {
                     }
                     alt="Wind speed icon"
                   />
-                  <span>{weather.windSpeed} m/s</span>
+                  <span>
+                    {weather.windSpeed} {weather.currentUnits.windspeed_10m}
+                  </span>
                 </div>
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <WeatherIcon
@@ -170,7 +173,10 @@ const Favorites = ({ favorites, removeFavorite, showWeather }) => {
                     }
                     alt="Humidity icon"
                   />
-                  <span>{weather.humidity} %</span>
+                  <span>
+                    {weather.humidity}{" "}
+                    {weather.currentUnits.relative_humidity_2m}
+                  </span>
                 </div>
                 <RemoveButton
                   onClick={(e) => {

@@ -20,6 +20,8 @@ const fetchWeatherData = async (city) => {
         params: {
           latitude: lat,
           longitude: lon,
+          current:
+            "temperature_2m,weathercode,windspeed_10m,relative_humidity_2m",
           hourly:
             "temperature_2m,weathercode,windspeed_10m,relative_humidity_2m",
           start: new Date().toISOString().split("T")[0],

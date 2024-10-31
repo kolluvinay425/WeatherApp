@@ -72,7 +72,14 @@ const AddButton = styled.button`
 // const getWeatherIcon = getTemperatureIcon(temperature);
 
 const WeatherDisplay = ({ weather, addFavorite }) => {
-  const { temperature, weatherConditions, humidity, windSpeed, city } = weather;
+  const {
+    temperature,
+    weatherConditions,
+    humidity,
+    windSpeed,
+    city,
+    currentUnits,
+  } = weather;
   const weatherIcon = getTemperatureIcon(temperature);
 
   return (
@@ -81,7 +88,9 @@ const WeatherDisplay = ({ weather, addFavorite }) => {
       <WeatherContainer>
         <Card>
           <WeatherIcon src={weatherIcon} alt="Weather icon" />
-          <WeatherInfo>{temperature}°C</WeatherInfo>
+          <WeatherInfo>
+            {temperature} {currentUnits.temperature_2m}
+          </WeatherInfo>
           <WeatherInfo> {weatherConditions}</WeatherInfo>
         </Card>
 
@@ -90,7 +99,9 @@ const WeatherDisplay = ({ weather, addFavorite }) => {
             src={"https://cdn-icons-png.flaticon.com/512/4888/4888486.png"}
             alt="Weather icon"
           />
-          <WeatherInfo>Humidity: {humidity} %</WeatherInfo>
+          <WeatherInfo>
+            Humidity: {humidity} {currentUnits.relative_humidity_2m}
+          </WeatherInfo>
         </Card>
         <Card>
           <WeatherIcon
@@ -99,7 +110,9 @@ const WeatherDisplay = ({ weather, addFavorite }) => {
             }
             alt="Weather icon"
           />
-          <WeatherInfo>Wind Speed: {windSpeed} km/h</WeatherInfo>
+          <WeatherInfo>
+            Wind Speed: {windSpeed} {currentUnits.windspeed_10m}
+          </WeatherInfo>
         </Card>
       </WeatherContainer>
       <div style={{ textAlign: "center", marginTop: "20px" }}>

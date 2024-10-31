@@ -38,17 +38,19 @@ const App = () => {
       const weatherResponse = await fetchWeatherData(city);
 
       if (weatherResponse.data) {
-        const weatherCode = weatherResponse.data.hourly.weathercode[0];
+        console.log(weatherResponse.data);
+        const weatherCode = weatherResponse.data.current.weathercode;
         const weatherDescription =
           weatherConditionsMap[weatherCode] || "Unknown";
         setWeather({
           city,
-          temperature: weatherResponse.data.hourly.temperature_2m[0],
+          temperature: weatherResponse.data.current.temperature_2m,
 
-          humidity: weatherResponse.data.hourly.relative_humidity_2m[0],
+          humidity: weatherResponse.data.current.relative_humidity_2m,
 
           weatherConditions: weatherDescription,
-          windSpeed: weatherResponse.data.hourly.windspeed_10m[0],
+          windSpeed: weatherResponse.data.current.windspeed_10m,
+          currentUnits: weatherResponse.data.current_units,
         });
         setHourlyTemperatures(weatherResponse.data.hourly.temperature_2m);
       }
