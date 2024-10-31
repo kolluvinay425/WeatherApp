@@ -29,14 +29,22 @@ export const weatherConditionsMap = {
   99: "Thunderstorm with heavy hail",
 };
 
-export const getTemperatureIcon = (temperature) => {
+export const getTemperatureIcon = (temperature, isDaytime) => {
   if (temperature > 30) {
-    return "https://cdn-icons-png.flaticon.com/512/7084/7084512.png";
-  } else if (temperature > 20) {
-    return "https://cdn2.iconfinder.com/data/icons/weather-flat-14/64/weather02-512.png";
-  } else if (temperature > 10) {
-    return "https://img.freepik.com/premium-vector/3d-weather-forecast-icons-summer-sun-with-bright-sunlight-hot-weather-3d-illustration_68708-3829.jpg";
-  } else {
-    return "https://w7.pngwing.com/pngs/212/586/png-transparent-weather-clouds-snow-winter-weather-color-icon.png";
+    return isDaytime
+      ? "https://cdn-icons-png.freepik.com/512/6805/6805171.png"
+      : "https://cdn2.iconfinder.com/data/icons/weather-line-21/64/weatherwarmnight-512.png";
   }
+  if (temperature > 20) {
+    return isDaytime
+      ? "https://cdn3.iconfinder.com/data/icons/vibrant-weather/70/Colour_Thermometer_warm_sun-512.png"
+      : "https://cdn2.iconfinder.com/data/icons/weather-line-21/64/weatherwarmnight-512.png";
+  }
+  if (temperature > 10) {
+    return isDaytime
+      ? "https://cdn0.iconfinder.com/data/icons/weather-flat-15/32/wind_cool_cloud_weather_element_day-512.png"
+      : "https://cdn-icons-png.freepik.com/256/13425/13425150.png";
+  }
+  // Default icon for temperatures 10 or below
+  return "https://cdn-icons-png.flaticon.com/512/1684/1684425.png";
 };

@@ -19,6 +19,7 @@ const App = () => {
   });
   const [isFetching, setIsFetching] = useState(false);
   const [hourlyTemperatures, setHourlyTemperatures] = useState([]);
+  const [isDaytime, setIsDaytime] = useState(false);
 
   const reset = () => {
     setHourlyTemperatures([]);
@@ -39,6 +40,12 @@ const App = () => {
 
       if (weatherResponse.data) {
         console.log(weatherResponse.data);
+
+        const currentHour = new Date().getHours();
+        const sunriseHour = 6;
+        const sunsetHour = 18;
+        const daytime = currentHour >= sunriseHour && currentHour < sunsetHour;
+        setIsDaytime(daytime);
         const weatherCode = weatherResponse.data.current.weathercode;
         const weatherDescription =
           weatherConditionsMap[weatherCode] || "Unknown";
@@ -51,6 +58,7 @@ const App = () => {
           weatherConditions: weatherDescription,
           windSpeed: weatherResponse.data.current.windspeed_10m,
           currentUnits: weatherResponse.data.current_units,
+          isDaytime: isDaytime,
         });
         setHourlyTemperatures(weatherResponse.data.hourly.temperature_2m);
       }
