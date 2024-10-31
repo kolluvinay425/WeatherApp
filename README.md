@@ -1,16 +1,24 @@
-# Getting Started with Create React App
+Weather Viewer
+This is a React application that allows users to view weather information on input name city.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Getting Started
+To get started with the project, follow these steps:
 
-## Available Scripts
+1. Clone the Repository
 
-In the project directory, you can run:
+git clone https://github.com/kolluvinay425/WeatherApp.git
+cd WetherViewer
 
-### `npm start`
+2. Install Packages
+Use npm to install the required dependencies:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+npm install
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-# WeatherApp
+3. Start the Application
+To start the development server, run:
+npm start
+
+This will launch the app, and you can view it in your browser at http://localhost:3000.
+
+
+Thank You:))
