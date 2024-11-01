@@ -8,12 +8,12 @@ const fetchWeatherData = async (city) => {
         params: { city, format: "json", limit: 1 },
       }
     );
-    console.log(geocodeResponse);
+
     if (geocodeResponse.data.length === 0) {
       alert("City not found");
     }
 
-    const { lat, lon } = geocodeResponse.data[0];
+    const { lat, lon, name } = geocodeResponse.data[0];
     const weatherResponse = await axios.get(
       "https://api.open-meteo.com/v1/forecast",
       {
@@ -30,9 +30,36 @@ const fetchWeatherData = async (city) => {
       }
     );
 
-    return weatherResponse;
+    const currentWeather = await fetchCurrentWeather(lat, lon);
+
+    let weatherInfo = currentWeather.data.current_weather;
+
+    weatherInfo.cityName = name;
+
+    return { weatherResponse, weatherInfo };
   } catch (err) {
     console.error(err);
+  }
+};
+
+// To fetch the times of different zones and day/night values
+const fetchCurrentWeather = async (lat, lon) => {
+  try {
+    const currentWeather = await axios.get(
+      "https://api.open-meteo.com/v1/forecast",
+      {
+        params: {
+          latitude: lat,
+          longitude: lon,
+          current_weather: true,
+          timezone: "auto", // Automatically uses the correct timezone
+        },
+      }
+    );
+
+    return currentWeather;
+  } catch (err) {
+    console.error("Error fetching time data:", err);
   }
 };
 
