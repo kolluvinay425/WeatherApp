@@ -57,20 +57,6 @@ const AddButton = styled.button`
   }
 `;
 
-// export const getWeatherIcon = (temperature) => {
-//   if (temperature > 30) {
-//     return "https://cdn-icons-png.flaticon.com/512/7084/7084512.png";
-//   } else if (temperature > 20) {
-//     return "https://cdn2.iconfinder.com/data/icons/weather-flat-14/64/weather02-512.png";
-//   } else if (temperature > 10) {
-//     return "https://img.freepik.com/premium-vector/3d-weather-forecast-icons-summer-sun-with-bright-sunlight-hot-weather-3d-illustration_68708-3829.jpg";
-//   } else {
-//     return "https://w7.pngwing.com/pngs/212/586/png-transparent-weather-clouds-snow-winter-weather-color-icon.png";
-//   }
-// };
-
-// const getWeatherIcon = getTemperatureIcon(temperature);
-
 const WeatherDisplay = ({ weather, addFavorite }) => {
   const {
     temperature,
@@ -79,9 +65,9 @@ const WeatherDisplay = ({ weather, addFavorite }) => {
     windSpeed,
     city,
     currentUnits,
+    isDaytime,
   } = weather;
-  const weatherIcon = getTemperatureIcon(temperature);
-
+  const weatherIcon = getTemperatureIcon(temperature, isDaytime);
   return (
     <div>
       <CityHeader>{city} Weather Info</CityHeader>

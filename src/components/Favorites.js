@@ -114,8 +114,8 @@ const Favorites = ({ favorites, removeFavorite, showWeather }) => {
     setIsCollapsed(!isCollapsed);
   };
 
-  const weatherIconFun = (temperature) => {
-    return getTemperatureIcon(temperature);
+  const weatherIconFun = (temperature, isDaytime) => {
+    return getTemperatureIcon(temperature, isDaytime);
   };
 
   const sortFavoritesByTemperature = () => {
@@ -144,7 +144,7 @@ const Favorites = ({ favorites, removeFavorite, showWeather }) => {
                 <span>{weather.city}</span>
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <WeatherIcon
-                    src={weatherIconFun(weather.temperature)}
+                    src={weatherIconFun(weather.temperature, weather.isDaytime)}
                     alt="Weather icon"
                   />
                   <div style={{ display: "flex", flexDirection: "column" }}>

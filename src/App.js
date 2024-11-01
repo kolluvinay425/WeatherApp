@@ -46,6 +46,7 @@ const App = () => {
         const sunsetHour = 18;
         const daytime = currentHour >= sunriseHour && currentHour < sunsetHour;
         setIsDaytime(daytime);
+
         const weatherCode = weatherResponse.data.current.weathercode;
         const weatherDescription =
           weatherConditionsMap[weatherCode] || "Unknown";

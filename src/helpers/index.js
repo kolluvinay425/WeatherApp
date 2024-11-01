@@ -30,6 +30,7 @@ export const weatherConditionsMap = {
 };
 
 export const getTemperatureIcon = (temperature, isDaytime) => {
+  console.log(temperature, isDaytime);
   if (temperature > 30) {
     return isDaytime
       ? "https://cdn-icons-png.freepik.com/512/6805/6805171.png"
