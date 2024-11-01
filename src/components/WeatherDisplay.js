@@ -25,12 +25,6 @@ const Card = styled.div`
   }
 `;
 
-const CityHeader = styled.h2`
-  width: 100%;
-  text-align: center;
-  color: #007bff;
-`;
-
 const WeatherInfo = styled.p`
   font-size: 1.2em;
   text-align: center;
