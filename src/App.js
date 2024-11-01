@@ -36,11 +36,11 @@ const App = () => {
 
     try {
       // Fetch coordinates for the entered city using a Geocoding API
-      const weatherResponse = await fetchWeatherData(city);
+      const { weatherResponse, weatherInfo } = await fetchWeatherData(city);
 
       if (weatherResponse.data) {
-        console.log(weatherResponse.data);
-
+        console.log(weatherResponse, weatherInfo);
+        const { is_day, time, cityName } = weatherInfo;
         const currentHour = new Date().getHours();
         const sunriseHour = 6;
         const sunsetHour = 18;
@@ -51,7 +51,7 @@ const App = () => {
         const weatherDescription =
           weatherConditionsMap[weatherCode] || "Unknown";
         setWeather({
-          city,
+          city: cityName,
           temperature: weatherResponse.data.current.temperature_2m,
 
           humidity: weatherResponse.data.current.relative_humidity_2m,
@@ -59,7 +59,8 @@ const App = () => {
           weatherConditions: weatherDescription,
           windSpeed: weatherResponse.data.current.windspeed_10m,
           currentUnits: weatherResponse.data.current_units,
-          isDaytime: isDaytime,
+          isDaytime: is_day,
+          time: time,
         });
         setHourlyTemperatures(weatherResponse.data.hourly.temperature_2m);
       }

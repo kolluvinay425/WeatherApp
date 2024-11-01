@@ -66,11 +66,14 @@ const WeatherDisplay = ({ weather, addFavorite }) => {
     city,
     currentUnits,
     isDaytime,
+    time,
   } = weather;
+
+  const dateTimeString = time;
+  const formattedTime = dateTimeString.split("T")[1];
   const weatherIcon = getTemperatureIcon(temperature, isDaytime);
   return (
     <div>
-      <CityHeader>{city} Weather Info</CityHeader>
       <WeatherContainer>
         <Card>
           <WeatherIcon src={weatherIcon} alt="Weather icon" />
@@ -78,6 +81,14 @@ const WeatherDisplay = ({ weather, addFavorite }) => {
             {temperature} {currentUnits.temperature_2m}
           </WeatherInfo>
           <WeatherInfo> {weatherConditions}</WeatherInfo>
+        </Card>
+
+        <Card>
+          <WeatherInfo style={{ fontSize: "30px" }}>{city}</WeatherInfo>
+
+          <WeatherInfo style={{ fontSize: "40px" }}>
+            {formattedTime}
+          </WeatherInfo>
         </Card>
 
         <Card>
